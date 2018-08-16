@@ -48,6 +48,19 @@ class Movie
     return Star.map_items(result)
   end
 
+  def remaining_budget
+    sql = "SELECT * FROM castings
+    WHERE movie_id = $1"
+    values = [@id]
+    castings = SqlRunner.run(sql, values)
+    castings_fees = castings.map { |casting| casting['fee'].to_i  }
+    castings_cost = castings_fees.reduce(:+)
+
+    return @budget - castings_cost
+
+
+  end
+
   def self.all
     sql = "SELECT * FROM movies"
     movies = SqlRunner.run(sql)
