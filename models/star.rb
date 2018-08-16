@@ -22,6 +22,22 @@ class Star
     @id = result.first['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE stars
+    SET title = $1, genre = $2
+    WHERE id = $3 "
+    values = [@first_name, @last_name, @id]
+    SqlRunner.run(sql, values)
+
+  end
+
+  def delete()
+    sql = "DELETE FROM stars
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.map_items(star_data)
     star_data.map { |star| Star.new(star)  }
   end
@@ -30,6 +46,11 @@ class Star
     sql = "SELECT * FROM stars"
     result = SqlRunner.run(sql)
     return self.map_items(result)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM stars"
+    SqlRunner.run(sql)
   end
 
   def self.find_by_id(id)

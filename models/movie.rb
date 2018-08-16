@@ -37,6 +37,9 @@ class Movie
     SqlRunner.run(sql, values)
   end
 
+  def display_stars
+  end
+
   def self.all
     sql = "SELECT * FROM movies"
     movies = SqlRunner.run(sql)
