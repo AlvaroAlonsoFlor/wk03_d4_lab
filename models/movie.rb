@@ -43,6 +43,11 @@ class Movie
     return self.map_items(movies)
   end
 
+  def self.delete_all
+    sql = "DELETE FROM movies"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(movie_data)
     return movie_data.map { |movie| Movie.new(movie)  }
   end
