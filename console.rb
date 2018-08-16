@@ -23,8 +23,15 @@ star1 = Star.new({
   'last_name' => 'Damon'
   })
 
+star2 = Star.new({
+  'first_name' => 'Franka',
+  'last_name' => 'Potente'
+  })
+
 movie1.save
+movie2.save
 star1.save
+star2.save
 
 casting1 = Casting.new({
   'movie_id' => movie1.id,
@@ -32,7 +39,15 @@ casting1 = Casting.new({
   'fee' => 500
   })
 
+casting2 = Casting.new({
+  'movie_id' => movie1.id,
+  'star_id' => star2.id,
+  'fee' => 400
+  })
+
 casting1.save
+casting2.save
+
 
 
 binding.pry
