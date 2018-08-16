@@ -22,4 +22,26 @@ class Star
     @id = result.first['id'].to_i
   end
 
+  def self.map_items(star_data)
+    star_data.map { |star| Star.new(star)  }
+  end
+
+  def self.all
+    sql = "SELECT * FROM stars"
+    result = SqlRunner.run(sql)
+    return self.map_items(result)
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM stars
+    WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    if result.count > 0
+      Star.map_items(result)
+    else
+      return nil
+    end
+  end
+
 end
