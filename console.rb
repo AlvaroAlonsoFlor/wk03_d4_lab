@@ -10,11 +10,13 @@ Casting.delete_all
 
 movie1 = Movie.new({
   'title' => 'Bourne Identity',
-  'genre' => 'thriller'
+  'genre' => 'thriller',
+  'budget' => 100000
   })
 movie2 = Movie.new({
   'title' => 'Bourne Ultimatum',
-  'genre' => 'thriller'
+  'genre' => 'thriller',
+  'budget' => 200000
   })
 
 
