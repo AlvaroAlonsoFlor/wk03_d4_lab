@@ -26,7 +26,21 @@ def new_movie
   p "Your movie has been added successfully"
 end
 
-new_movie
+def new_star
+
+  p "What is the actor's first name?"
+  first_name = gets.chomp!
+  p "What is the actor's last name?"
+  last_name = gets.chomp!
+
+  star = Star.new({
+    'first_name' => first_name,
+    'last_name' => last_name
+    })
+  star.save
+end
+
+new_star
 
 
 # movie1 = Movie.new({
